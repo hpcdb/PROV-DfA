@@ -87,7 +87,7 @@ WHERE
   out_solver_before.time_iteration < out_solver_moment_at_adaptation.time_iteration and
   out_solver_after.time_iteration > (out_solver_moment_at_adaptation.time_iteration - 10) and
   out_solver_after.time_iteration > out_solver_moment_at_adaptation.time_iteration and
-  out_solver_after.time_iteration < (out_solver_moment_at_adaptation.time_iteration + 10)
+  out_solver_after.time_iteration < (out_solver_moment_at_adaptation.time_iteration + 10) and
   loop_tuning.id = pers.id and  
   pers.name = 'Bob'
 GROUP BY
