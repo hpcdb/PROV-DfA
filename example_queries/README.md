@@ -4,7 +4,7 @@
 Inspecting parameter tunings ("who", "when", "what"). How many tunings did I do? Which parameters did I change? What were the values when I changed and what values did I change into? When did each adaptation happen?
 
 ```sql
-SELECT 
+SELECT
   param_tuning.id,
   param_tuning.starttime,
   param_tuning.description,
@@ -30,7 +30,7 @@ ORDER BY
 ## Query 2
 Inspecting Loop Parameters. What loop parameters did I tune? What were the values when I changed and what values did I change into? When and in which itration did each adaptation happen?
 ```sql
-SELECT 
+SELECT
   loop_tuning.id,
   loop_tuning.starttime,
   loop_tuning.description,
@@ -54,10 +54,8 @@ WHERE
   exec_dt.id = loop_tuning_exec_dt.execute_data_transformation_id and
   loop_tuning_exec_dt.parameter_tuning_id = loop_tuning.id and
   out_solver.exec_id = exec_dt.id and
-  loop_param.annotation = 'or parameter used for loop control' and  
+  loop_param.annotation = 'parameter used for loop control' and  
   pers.name = 'Bob'
 ORDER BY
   loop_tuning.id
 ```
-
-
