@@ -118,7 +118,7 @@ WHERE
   data_red.id = del_element.data_reduction_id and
   del_element.data_element_id = in_solver.id and  
   exec_data_before.id < exec_dt_time_loop.id and
-  exec_data_after.id > exec_dt_time_loop.id
+  exec_data_after.id > exec_dt_time_loop.id and
   data_red.person_id = pers.id and  
   pers.name = 'Bob'
 GROUP BY
