@@ -46,16 +46,50 @@ FROM
   person pers,
   execute_data_transformation exec_dt,
   parameter_tuning_exec_data_transformation loop_tuning_exec_dt,
-  out_solver_dt out_solver
+  solver_out_dtd out_solver
 WHERE
   loop_param_tuned.parameter_tuning_id = loop_tuning.id and
   loop_param_tuned.attribute_id = loop_param.id and
   loop_tuning.id = pers.id and  
   exec_dt.id = loop_tuning_exec_dt.execute_data_transformation_id and
-  loop_tuning_exec_dt.parameter_tuning_id = loop_tuning.id and
+  loop_tuning_exec_dt.loop_tuning_id = loop_tuning.id and
   out_solver.exec_id = exec_dt.id and
   loop_param.annotation = 'parameter used for loop control' and  
   pers.name = 'Bob'
 ORDER BY
   loop_tuning.id
+```
+
+## Query 3
+In parameter tuning 3, how was the solver convergence and main output values 10 iterations before and after?
+```sql
+SELECT
+  loop_tuning.starttime,
+  loop_tuning.description,
+  out_solver_moment_at_adaptation.time_iteration,
+  avg(out_solver_before.final_linear_residual),
+  avg(out_solver_after.final_non_linear_residual)  
+FROM
+  loop_adaptation loop_tuning,
+  attribute loop_param,
+  attribute_tuned loop_param_tuned,
+  person pers,
+  execute_data_transformation exec_dt,
+  parameter_tuning_exec_data_transformation loop_tuning_exec_dt,
+  solver_out_dtd out_solver_moment_at_adaptation,
+  solver_out_dtd out_solver_before,
+  solver_out_dtd out_solver_after
+WHERE
+  loop_tuning.id = 3 and
+  loop_tuning.id = loop_tuning_exec_dt.loop_tuning_id and
+  loop_tuning_exec_dt.execute_data_transformation_id = exec_dt.id and
+  exec_dt.id = out_solver_moment_at_adaptation.exec_id and
+  out_solver_before.time_iteration < out_solver_moment_at_adaptation.time_iteration and
+  out_solver_after.time_iteration > (out_solver_moment_at_adaptation.time_iteration - 10) and
+  out_solver_after.time_iteration > out_solver_moment_at_adaptation.time_iteration and
+  out_solver_after.time_iteration < (out_solver_moment_at_adaptation.time_iteration + 10)
+  loop_tuning.id = pers.id and  
+  pers.name = 'Bob'
+GROUP BY
+  loop_tuning.starttime, loop_tuning.description, out_solver_moment_at_adaptation.time_iteration
 ```
