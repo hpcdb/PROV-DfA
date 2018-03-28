@@ -9,7 +9,6 @@ SELECT
   param_tuning.starttime,
   param_tuning.description,
   param.name,
-  param.specification,
   param_tuned.old_value,
   param_tuned.new_value
 FROM
@@ -21,7 +20,7 @@ WHERE
   param_tuned.parameter_tuning_id = param_tuning.id and
   param_tuned.attribute_id = param.id and
   param_tuning.person_id = pers.id and  
-  param.annotation = 'input parameter of a data transformation' and  
+  param.specification = 'P_I' and  
   pers.name = 'Bob'
 ORDER BY
   param_tuning.id
@@ -35,7 +34,6 @@ SELECT
   loop_adp.starttime,
   loop_adp.description,
   loop_param.name,
-  loop_param.specification,
   loop_param_tuned.old_value,
   loop_param_tuned.new_value,
   out_solver.time_iteration
@@ -54,7 +52,7 @@ WHERE
   exec_dt.id = loop_tuning_exec_dt.execute_data_transformation_id and
   loop_tuning_exec_dt.loop_tuning_id = loop_adp.id and
   out_solver.exec_id = exec_dt.id and
-  loop_param.annotation = 'parameter used for loop control' and  
+  loop_param.specification = 'L_I' and  
   pers.name = 'Bob'
 ORDER BY
   loop_adp.id
