@@ -1,3 +1,7 @@
+# PROV-DfA Provenance Data Model
+A Dataflow-aware provenance representation of steering actions to model data relationships between user steering actions and their consequences on the intermediate data production and experiment results.
+![alt text](https://raw.githubusercontent.com/hpcdb/PROV-DfA/master/PROV-DfA.png "PROV-DfA provenance data model")
+
 # Examplary Queries for Provenance of Adaptation
 
 ## Query 1:
