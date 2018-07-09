@@ -1,5 +1,12 @@
-# PROV-DfA Provenance Data Model
-A Dataflow-aware provenance representation of steering actions to model data relationships between user steering actions and their consequences on the intermediate data production and experiment results.
+# PROV-DfA
+
+This is an online appendix for [IPAW'18](http://provenanceweek2018.org/ipaw/) paper entitled *Provenance of Dynamic Adaptations in User-steered Dataflows*
+
+The paper introduces PROV-DfA, a dataflow-aware provenance representation of steering actions to model data relationships between user steering actions and their consequences on the intermediate data production and experiment results.
+
+This appendix shows a larger image of PROV-DfA general overview and examplary SQL queries that uses a relational database schema that implements PROV-DfA.
+
+# PROV-DfA general overview
 ![alt text](https://raw.githubusercontent.com/hpcdb/PROV-DfA/master/PROV-DfA.png "PROV-DfA provenance data model")
 
 # Examplary Queries for Provenance of Adaptation
