@@ -1,6 +1,6 @@
 # PROV-DfA
 
-This is an online appendix for [IPAW'18](http://provenanceweek2018.org/ipaw/) paper entitled *Provenance of Dynamic Adaptations in User-steered Dataflows*
+This is an online appendix for [IPAW'18](http://provenanceweek2018.org/ipaw/) paper entitled *[Provenance of Dynamic Adaptations in User-steered Dataflows](https://link.springer.com/chapter/10.1007/978-3-319-98379-0_2)*.
 
 The paper introduces PROV-DfA, a dataflow-aware provenance representation of steering actions to model data relationships between user steering actions and their consequences on the intermediate data production and experiment results.
 
